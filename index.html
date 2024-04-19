@@ -1,0 +1,193 @@
+<?php
+ 
+        // servername => localhost
+        // username => root
+        // password => empty
+        // database name => staff
+        $conn = mysqli_connect("localhost", "root", "", "chat_app_db");
+         
+        // Check connection
+        if($conn === false){
+            die("ERROR: Could not connect. "
+                . mysqli_connect_error());
+        }
+         
+        // Taking all 5 values from the form data(input)
+        
+        $post = $_REQUEST['post'];
+         
+        // Performing insert query execution
+        // here our table name is college
+        $sql = "INSERT INTO users  VALUES ('$post')";
+         
+        if(mysqli_query($conn, $sql)){
+            echo "<h3>Post Uploaded."
+                . </h3>"; 
+ 
+            echo nl2br("$post");
+        } else{
+            echo "ERROR: Hush! Sorry $sql. "
+                . mysqli_error($conn);
+        }
+         
+        // Close connection
+        mysqli_close($conn);
+        ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>kite E-learn</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://kit.fontawesome.com/c45e18bcc2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<nav>
+		<div class="nav-left">
+			<img src="images/logo.png" class="logo">
+			<ul>
+				<li><img src="images/notification.png"></li>
+				<li><img src="images/inbox.png"></li>
+				<li><img src="images/video.png"></li>
+			</ul>
+		</div>
+		<div class="nav-right">
+			
+			<div class="search-box">
+				<img src="images/search.png">
+				<input type="text" placeholder="Search">
+			</div>
+			<div class="nav-user-icon online" onclick="settingsMenuToggle()">
+				<img src="images/profile-pic.png">
+			</div>
+		</div>
+
+			<div class="settings-menu">
+				<div id="dark-btn">
+					<span></span>
+				</div>
+				<div class="settings-menu-inner">
+					<div class="user-profile">
+					<img src="images/profile-pic.png">
+					<div>
+						<p>Knock</p>
+						<a href="#">See Your Profile</a>
+					</div>
+				</div>
+				<hr>
+				<div class="user-profile">
+					<img src="images/feedback.png">
+					<div>
+						<p>Give Feedback</p>
+						<a href="#">Help us to improve</a>
+					</div>
+				</div>
+				<hr>
+				<div class="settings-links">
+					<img src="images/setting.png" class="settings-icon">
+					<a href="#">Setting & Privacy <img src="images/arrow.png" width="10px"></a>
+				</div>
+				<div class="settings-links">
+					<img src="images/help.png" class="settings-icon">
+					<a href="#">Help & Support <img src="images/arrow.png" width="10px"></a>
+				</div>
+				<div class="settings-links">
+					<img src="images/display.png" class="settings-icon">
+					<a href="#">Display & Accessibility <img src="images/arrow.png" width="10px"></a>
+				</div>
+				<div class="settings-links">
+					<img src="images/logout.png" class="settings-icon">
+					<a href="logout.php">Logout <img src="images/arrow.png" width="10px"></a>
+				</div>
+			</div>
+				
+			</div>
+
+
+	</nav>
+	<div class="container">
+		<div class="left-sidebar">
+			<div class="imp-links">
+				<a href="https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=fea66e2f9d564a8b972693716bc51cc5"><img src="images/news.png">Latest News</a>
+				<a href="home.php"><img src="images/friends.png">Chat</a>
+				</div>
+			
+		</div>
+		<div class="main-content">
+			
+			
+			<div class="write-post-container">
+				<div class="user-profile">
+					<img src="images/profile-pic.png">
+					<div>
+						<p>Knock</p>
+						<small>Public <i class="fas fa-caret-down"></i></small>
+					</div>
+				</div>
+
+				<div class="post-input-container">
+					<textarea rows="3" placeholder="What's on your mind, Knock?"></textarea>
+					<div class="add-post-links">
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="write-post-container">
+				<div class="user-profile">
+					<img src="images/profile-pic.png">
+					<div>
+						<p>Knock</p>
+						<small>Public <i class="fas fa-caret-down"></i></small>
+					</div>
+				</div>
+
+				<div class="post-input-container">
+					<textarea rows="3" placeholder="What's on your mind, Knock?" name="post"></textarea>
+					<div class="add-post-links">
+						
+					</div>
+				</div>
+			</div>
+
+		
+				<button type="button" class="load-more-btn">Load More</button>
+		</div>
+		<div class="right-sidebar">
+			<div class="sidebar-title">
+				<h4>Events</h4>
+				<a href="#">See All</a>
+			</div>
+
+			<div class="event">
+				<div class="left-event">
+					<h3>21</h3>
+					<span>October</span>
+				</div>
+				<div class="right-event">
+					<h4>Social Media</h4>
+					<p><i class="fas fa-map-marker-alt"></i> Knock IT Solutions</p>
+					<a href="#">More Info</a>
+				</div>
+			</div>
+			<div class="event">
+				<div class="left-event">
+					<h3>22</h3>
+					<span>October</span>
+				</div>
+				<div class="right-event">
+					<h4>E-Commerce</h4>
+					<p><i class="fas fa-map-marker-alt"></i> Knock IT Solutions</p>
+					<a href="#">More Info</a>
+				</div>
+			</div>			
+		</div>
+	</div>
+	<div class="footer">
+		<p>Copyright 2023 - Kite</p>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
